@@ -1,0 +1,22 @@
+PODS:
+  - SyntaxKit (1.0)
+
+DEPENDENCIES:
+  - SyntaxKit (from `git@github.com:vhart/SyntaxKit`, branch `master`)
+
+EXTERNAL SOURCES:
+  SyntaxKit:
+    :branch: master
+    :git: git@github.com:vhart/SyntaxKit
+
+CHECKOUT OPTIONS:
+  SyntaxKit:
+    :commit: 54bf2a238431349b7009603c365b7d4d07dd1620
+    :git: git@github.com:vhart/SyntaxKit
+
+SPEC CHECKSUMS:
+  SyntaxKit: 23cc40d740c1996f085a0280c94499249b1b5494
+
+PODFILE CHECKSUM: 4f46c38f7f14a1e53640f12b329b062e8a54aaca
+
+COCOAPODS: 1.1.1
