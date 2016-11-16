@@ -10,24 +10,44 @@ import UIKit
 import SyntaxKit
 
 class ViewController: UIViewController {
+    
+    enum TmType: String {
+        case Swift
+        case Tomorrow = "Tomorrow-Night-Bright"
+        
+        var extensionType: String {
+            switch self {
+            case .Swift:
+                return "tmLanguage"
+            case .Tomorrow:
+                return "tmTheme"
+            }
+        }
+    }
 
     @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let manager = BundleManager { (identifier, isLanguage) -> (URL?) in
-            if identifier == "Swift" {
-            return Bundle.main.url(forResource: identifier,
-                                   withExtension: "tmLanguage")
-            } else {
-                return Bundle.main.url(forResource: identifier, withExtension: "tmTheme")
-            }
+            guard let type = TmType(rawValue: identifier) else { return nil }
+            return Bundle.main.url(forResource: type.rawValue,
+                                   withExtension: type.extensionType)
         }
         let yaml = manager.language(withIdentifier: "Swift")!
         let tomorrow = manager.theme(withIdentifier: "Tomorrow-Night-Bright")!
         let attributedParser = AttributedParser(language: yaml, theme: tomorrow)
 
-        let input = "func do() -> String {\n    return \"EUREKA\"\n}"
-        textView.attributedText = attributedParser.attributedString(for: input)
+        let input = "func do() -> String {\n    return String(format: \"EUREKA\")\n}"
+        let font = UIFont.boldSystemFont(ofSize: 18.0)
+        let attributes = [NSFontAttributeName: font]
+        let attText = attributedParser.attributedString(for: input, base: attributes)
+        let mutAtt = NSMutableAttributedString(attributedString: attText)
+        mutAtt.beginEditing()
+        let fullRange = NSMakeRange(0, mutAtt.length)
+        mutAtt.removeAttribute(NSFontAttributeName, range: fullRange)
+        mutAtt.addAttributes(attributes, range: fullRange)
+        mutAtt.endEditing()
+        textView.attributedText = mutAtt
     }
 }
 
