@@ -19,6 +19,8 @@
 		D50B4C491DD2D5320080E0B6 /* swift_info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D50B4C481DD2D5320080E0B6 /* swift_info.plist */; };
 		D50B4C4B1DD2D54A0080E0B6 /* Swift.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = D50B4C4A1DD2D54A0080E0B6 /* Swift.tmLanguage */; };
 		D50B4C4F1DD2DB9A0080E0B6 /* Tomorrow-Night-Bright.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = D50B4C4E1DD2DB9A0080E0B6 /* Tomorrow-Night-Bright.tmTheme */; };
+		D5BB824A1E218D6B0093590B /* StringLayoutHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BB82491E218D6B0093590B /* StringLayoutHandler.swift */; };
+		D5BB824C1E21D58D0093590B /* Tomorrow.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = D5BB824B1E21D58D0093590B /* Tomorrow.tmTheme */; };
 		E416D65939C3B77B25076DC4 /* Pods_MarkdownTestingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEB7E92E1ADF45E9B1E6F81 /* Pods_MarkdownTestingUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,9 @@
 		D50B4C481DD2D5320080E0B6 /* swift_info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = swift_info.plist; sourceTree = "<group>"; };
 		D50B4C4A1DD2D54A0080E0B6 /* Swift.tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Swift.tmLanguage; sourceTree = "<group>"; };
 		D50B4C4E1DD2DB9A0080E0B6 /* Tomorrow-Night-Bright.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Tomorrow-Night-Bright.tmTheme"; sourceTree = "<group>"; };
+		D550E71E1E1F3C10000DE42F /* Colors.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Colors.playground; sourceTree = "<group>"; };
+		D5BB82491E218D6B0093590B /* StringLayoutHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringLayoutHandler.swift; sourceTree = "<group>"; };
+		D5BB824B1E21D58D0093590B /* Tomorrow.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Tomorrow.tmTheme; sourceTree = "<group>"; };
 		D710F727FC46F5FCEF648FB3 /* Pods-MarkdownTestingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarkdownTestingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarkdownTestingUITests/Pods-MarkdownTestingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E10DCC4F23E1459016916231 /* Pods-MarkdownTesting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarkdownTesting.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarkdownTesting/Pods-MarkdownTesting.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +126,7 @@
 			children = (
 				D50B4C221DD2D30B0080E0B6 /* AppDelegate.swift */,
 				D50B4C241DD2D30B0080E0B6 /* ViewController.swift */,
+				D5BB82491E218D6B0093590B /* StringLayoutHandler.swift */,
 				D50B4C261DD2D30B0080E0B6 /* Main.storyboard */,
 				D50B4C291DD2D30B0080E0B6 /* Assets.xcassets */,
 				D50B4C2B1DD2D30B0080E0B6 /* LaunchScreen.storyboard */,
@@ -128,7 +134,9 @@
 				D50B4C421DD2D4E40080E0B6 /* theme_info.plist */,
 				D50B4C481DD2D5320080E0B6 /* swift_info.plist */,
 				D50B4C4A1DD2D54A0080E0B6 /* Swift.tmLanguage */,
+				D5BB824B1E21D58D0093590B /* Tomorrow.tmTheme */,
 				D50B4C4E1DD2DB9A0080E0B6 /* Tomorrow-Night-Bright.tmTheme */,
+				D550E71E1E1F3C10000DE42F /* Colors.playground */,
 				D50B4C441DD2D4EE0080E0B6 /* Themes */,
 			);
 			path = MarkdownTesting;
@@ -236,6 +244,7 @@
 			files = (
 				D50B4C4B1DD2D54A0080E0B6 /* Swift.tmLanguage in Resources */,
 				D50B4C491DD2D5320080E0B6 /* swift_info.plist in Resources */,
+				D5BB824C1E21D58D0093590B /* Tomorrow.tmTheme in Resources */,
 				D50B4C451DD2D4EE0080E0B6 /* Themes in Resources */,
 				D50B4C431DD2D4E40080E0B6 /* theme_info.plist in Resources */,
 				D50B4C4F1DD2DB9A0080E0B6 /* Tomorrow-Night-Bright.tmTheme in Resources */,
@@ -354,6 +363,7 @@
 			files = (
 				D50B4C251DD2D30B0080E0B6 /* ViewController.swift in Sources */,
 				D50B4C231DD2D30B0080E0B6 /* AppDelegate.swift in Sources */,
+				D5BB824A1E218D6B0093590B /* StringLayoutHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

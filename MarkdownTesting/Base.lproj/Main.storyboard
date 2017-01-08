@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,27 +21,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Kb-Ox-Iy6">
-                                <rect key="frame" x="16" y="20" width="343" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yLy-qW-Ype">
+                                <rect key="frame" x="69" y="20" width="237" height="29"/>
+                                <segments>
+                                    <segment title="Tomorrow"/>
+                                    <segment title="Tomorrow-Bright"/>
+                                </segments>
+                                <connections>
+                                    <action selector="themeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="yEH-n6-9qF"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="5Kb-Ox-Iy6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NdW-4S-eQi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5Kb-Ox-Iy6" secondAttribute="trailing" id="VTa-w8-2BJ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Kb-Ox-Iy6" secondAttribute="bottom" id="lCM-On-IuD"/>
-                            <constraint firstItem="5Kb-Ox-Iy6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mrm-on-zkp"/>
+                            <constraint firstItem="yLy-qW-Ype" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ANf-DQ-eTK"/>
+                            <constraint firstItem="yLy-qW-Ype" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="C0N-b3-h0V"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="textView" destination="5Kb-Ox-Iy6" id="jAr-aj-QfR"/>
+                        <outlet property="themeSegmentedControl" destination="yLy-qW-Ype" id="9Ms-B6-Hno"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="92.203898050974516"/>
         </scene>
     </scenes>
 </document>
