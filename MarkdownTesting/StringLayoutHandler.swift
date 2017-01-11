@@ -3,11 +3,11 @@ import Foundation
 
 struct StringLayoutHandler {
 
-    private static var monospacedMenloFontName = "Menlo-Regular"
-
     enum SerializationTokens: String {
-        case tab = "#T"
-        case newline = "#N"
+        case tab = "T"
+        case newline = "N"
+
+        var token: String { return "#" + rawValue }
     }
 
     enum TabLength: Int {
@@ -29,8 +29,10 @@ struct StringLayoutHandler {
 
     func deserializedString(input: String) -> String {
         var formatted = input
-        formatted = formatted.replacingOccurrences(of: SerializationTokens.tab.rawValue, with: tabLength.padding())
-        formatted = formatted.replacingOccurrences(of: SerializationTokens.newline.rawValue, with: "\n")
+        formatted = formatted.replacingOccurrences(of: SerializationTokens.tab.token,
+                                                   with: tabLength.padding())
+        formatted = formatted.replacingOccurrences(of: SerializationTokens.newline.token,
+                                                   with: "\n")
         return formatted
     }
 

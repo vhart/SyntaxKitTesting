@@ -11,23 +11,6 @@ import SyntaxKit
 
 class ViewController: UIViewController {
 
-    enum TmType: String {
-        case swift = "Swift"
-        case tomorrowBright = "Tomorrow-Night-Bright"
-        case tomorrow = "Tomorrow"
-
-        var extensionType: String {
-            switch self {
-            case .swift:
-                return "tmLanguage"
-            case .tomorrowBright:
-                return "tmTheme"
-            case .tomorrow:
-                return "tmTheme"
-            }
-        }
-    }
-
     enum ThemeApplied: Int {
         case tomorrow = 0
         case tomorrowBright = 1
@@ -41,13 +24,19 @@ class ViewController: UIViewController {
 
     fileprivate var manager = BundleManager {
         (identifier, isLanguage) -> (URL?) in
-        guard let type = TmType(rawValue: identifier)
+        typealias TmTypeGenerator = (String) -> TmType?
+
+        let languageGen: TmTypeGenerator = { id in return TmLanguage(rawValue: id) }
+        let themeGen: TmTypeGenerator = { id in return TmTheme(rawValue: id) }
+
+        guard let type: TmType = isLanguage ? languageGen(identifier) : themeGen(identifier)
             else { return nil }
-        return Bundle.main.url(forResource: type.rawValue,
+
+        return Bundle.main.url(forResource: type.fileName,
                                withExtension: type.extensionType)
     }
 
-    var code = "#Nimport Foundation#Nimport UIKit#N#Nvar str = \"Hello, playground\"#N#Nstruct StringLayoutHandler {#N#T#N#Tprivate var tabLength: TabLength#N#Tprivate var maxCharactersPerLine: Int#N#Tprivate let monoSpacedFontName = \"Menlo-Regular\"#N#Tprivate let font: UIFont#N#T#N#Tenum TabLength: Int {#N#T#Tcase short = 2#N#T#Tcase regular = 4#N#T#T#N#T#Tfunc padding() -> String {#N#T#T#Treturn \"\".padding(toLength: rawValue, withPad: \" \", startingAt: 0)#N#T#T}#N#T}#N#T#N#Tinit?(tabLength: TabLength, viewWidth: CGFloat, fontSize: CGFloat) {#N#T#Tself.tabLength = tabLength#N#T#Tguard let font = UIFont(name: monoSpacedFontName, size: fontSize)#N#T#T#Telse {  return nil }#N#T#Tself.font = font#N#T#Tlet testString = \"H31l0&GR8!\" as NSString#N#T#Tlet boundingRectWidth = testString.size(attributes: [NSFontAttributeName: font]).width#N#T#Tlet widthPerChar = boundingRectWidth / CGFloat(testString.length)#N#T#Tself.maxCharactersPerLine = Int(viewWidth / widthPerChar)#N#T}#N#T#N#Tfunc formattedString(input: String) -> String {#N#T#Tvar formatted = input#N#T#Tformatted.replacingOccurrences(of: \"#T\", with: tabLength.padding())#N#T#Tformatted.replacingOccurrences(of: \"#N\", with: \"\n\")#N#T#Treturn formatted#N#T}#N}#N#N"
+    var code = "import UIKit#Nimport Foundation#N#Nstruct StringLayoutHandler {#N#T#N#Tprivate static var monospacedMenloFontName = \"Menlo-Regular\"#N#T#N#Tenum SerializationTokens: String {#N#T#Tcase tab = \"T\"#N#T#Tcase newline = \"N\"#N#T#T#N#T#Tvar token: String { return \"#\" + rawValue }#N#T}#N#T#N#Tenum TabLength: Int {#N#T#Tcase short = 2#N#T#Tcase regular = 4#N#T#T#N#T#Tfunc padding() -> String {#N#T#T#Treturn \"\".padding(toLength: rawValue, withPad: \" \", startingAt: 0)#N#T#T}#N#T}#N#T#N#Tprivate var tabLength: TabLength#N#Tprivate var font: UIFont#N#T#N#Tinit(tabLength: TabLength, font: UIFont) {#N#T#Tself.tabLength = tabLength#N#T#Tself.font = font#N#T}#N#T#N#Tfunc deserializedString(input: String) -> String {#N#T#Tvar formatted = input#N#T#Tformatted = formatted.replacingOccurrences(of: SerializationTokens.tab.token,#N#T#T#T#T#T#T#T#T#T#T#T#T   with: tabLength.padding())#N#T#Tformatted = formatted.replacingOccurrences(of: SerializationTokens.newline.token,#N#T#T#T#T#T#T#T#T#T#T#T#T   with: \"\\n\")#N#T#Treturn formatted#N#T}#N#T#N#Tfunc applyFont(to input: NSAttributedString) -> NSAttributedString {#N#T#Tlet attributes = [NSFontAttributeName: font]#N#T#Tlet styledString = NSMutableAttributedString(attributedString: input)#N#T#TstyledString.beginEditing()#N#T#Tlet fullRange = NSMakeRange(0, styledString.length)#N#T#TstyledString.removeAttribute(NSFontAttributeName, range: fullRange)#N#T#TstyledString.addAttributes(attributes, range: fullRange)#N#T#TstyledString.endEditing()#N#T#Treturn styledString#N#T}#N}#N"
 
     @IBOutlet weak var themeSegmentedControl: UISegmentedControl!
 
